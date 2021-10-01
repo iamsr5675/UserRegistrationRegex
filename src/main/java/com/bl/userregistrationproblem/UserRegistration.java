@@ -18,14 +18,14 @@ public class UserRegistration {
 		isFirstName = matcherObject.matches();
 
 		if (isFirstName)
-			System.out.println(firstName + " is an Valid First Name");
+			System.out.println(firstName + " is a Valid First Name");
 		else
 			System.err.println(firstName + " is an Invalid First Name");
 	}
 
 	public static void checkValidLastName(String lastName) {
 
-		boolean isLastName;
+		boolean isLastName = true;
 		String lastNameRegex = "[A-Z]{1}[a-z]{2,}";
 		Pattern patternObject = Pattern.compile(lastNameRegex);
 		if (lastName == null) {
@@ -35,14 +35,14 @@ public class UserRegistration {
 		isLastName = matcherObject.matches();
 
 		if (isLastName)
-			System.out.println(lastName + " is an Valid Last Name");
+			System.out.println(lastName + " is a Valid Last Name");
 		else
 			System.err.println(lastName + " is an Invalid Last Name");
 	}
 
 	public static void checkValidEmail(String email) {
 
-		boolean isEmail;
+		boolean isEmail = true;
 		String emailRegex = "^[a-zA-Z]+[a-zA-Z0-9]*[- . + _]?[a-zA-Z0-9]+[@]{1}[a-z0-9]+[.]{1}[a-z]+[.]?[a-z]+$";
 		Pattern patternObject = Pattern.compile(emailRegex);
 		if (email == null) {
@@ -59,7 +59,7 @@ public class UserRegistration {
 
 	public static void checkValidMobileNumber(String mobileNumber) {
 
-		boolean isMobileNumber;
+		boolean isMobileNumber = true;
 		String mobileRegex = "^[0-9]{2}\\s{1}[0-9]{10}$";
 		Pattern patternObject = Pattern.compile(mobileRegex);
 		if (mobileNumber == null) {
@@ -72,6 +72,23 @@ public class UserRegistration {
 			System.out.println(mobileNumber + " is a Valid  Mobile Number\n");
 		else
 			System.err.println(mobileNumber + " is an Invalid Mobile Number");
+	}
+
+	public static void checkValidPassword(String password) {
+
+		boolean isPassword = true;
+		String passwordRegex = "^([a-zA-Z0-9]){8,}$";
+		Pattern patternObject = Pattern.compile(passwordRegex);
+		if (password == null) {
+			isPassword = false;
+		}
+		Matcher matcherObject = patternObject.matcher(password);
+		isPassword = matcherObject.matches();
+
+		if (isPassword)
+			System.out.println(password + " is a Valid  Password\n");
+		else
+			System.err.println(password + " is an Invalid Password");
 	}
 
 	public static void main(String[] args) {
@@ -95,6 +112,10 @@ public class UserRegistration {
 		System.out.println("Enter Your Mobile Number");
 		String mobileNumber = scanner.next();
 		checkValidMobileNumber(mobileNumber);
+		
+		System.out.println("Enter Your Password");
+		String password = scanner.next();
+		checkValidPassword(password);
 
 		scanner.close();
 
