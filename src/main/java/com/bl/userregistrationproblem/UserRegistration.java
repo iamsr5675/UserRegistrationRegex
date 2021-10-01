@@ -77,7 +77,7 @@ public class UserRegistration {
 	public static void checkValidPassword(String password) {
 
 		boolean isPassword = true;
-		String passwordRegex = "^([a-zA-Z0-9]){8,}$";
+		String passwordRegex = "^(?=.*[A-Z])([a-zA-Z0-9]){8,}$";
 		Pattern patternObject = Pattern.compile(passwordRegex);
 		if (password == null) {
 			isPassword = false;
@@ -112,7 +112,7 @@ public class UserRegistration {
 		System.out.println("Enter Your Mobile Number");
 		String mobileNumber = scanner.next();
 		checkValidMobileNumber(mobileNumber);
-		
+
 		System.out.println("Enter Your Password");
 		String password = scanner.next();
 		checkValidPassword(password);
